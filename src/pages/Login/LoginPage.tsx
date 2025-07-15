@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./loginstyles.css"
 
 
 const LoginPage = () => {
@@ -29,7 +29,7 @@ const LoginPage = () => {
     
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="min-h-screen flex items-center justify-center .gradient-bg-login-animated">
            <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
                 <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">Employee Manager</h2>
                 {erro && (
