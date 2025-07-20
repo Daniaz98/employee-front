@@ -1,6 +1,5 @@
-import { Link } from "react-router";
-import Ellipse  from "../../../assets/login-page/Ellipse.png"
-import Ellipse2  from "../../../assets/login-page/Ellipse2.png"
+import Ellipse  from "../../../assets/signup-page/Ellipse-blue.png"
+import Ellipse2  from "../../../assets/signup-page/Ellipse-blue-2.png"
 
 
 export default function LoginPage() {
@@ -12,7 +11,7 @@ export default function LoginPage() {
 
         {/* Esquerda: Mensagem de boas-vindas */}
         <div className="flex-1">
-          <h1 className="text-5xl font-bold">Seja bem-vindo ao <span className="text-purple-400">Employee Manager!</span></h1>
+          <h1 className="text-5xl font-bold">Realize seu <span className="text-blue-400">Cadastro!</span></h1>
         </div>
 
         {/* Direita: Formulário */}
@@ -27,10 +26,15 @@ export default function LoginPage() {
           <input
             type="password"
             placeholder="Senha"
+            className="w-full p-2 rounded bg-black border border-gray-600 mb-4"
+          />
+          <input
+            type="password"
+            placeholder="Confirme sua senha"
             className="w-full p-2 rounded bg-black border border-gray-600 mb-6"
           />
 
-          <button className="w-full py-2 rounded bg-gradient-to-r from-blue-500 to-purple-600">
+          <button className="w-full py-2 rounded bg-gradient-to-r from-blue-500 to-blue-950">
             Entrar
           </button>
 
@@ -40,12 +44,7 @@ export default function LoginPage() {
 
           <div className="my-4 border-t border-gray-600" />
 
-          <div className="mt-6 text-sm text-center">
-            <p>
-              Não possui uma conta?{" "}
-              <Link to="/signup" className="text-purple-400 hover:underline cursor-pointer">Registre-se aqui</Link>
-            </p>
-          </div>
+         
         </div>
       </div>
     </div>
