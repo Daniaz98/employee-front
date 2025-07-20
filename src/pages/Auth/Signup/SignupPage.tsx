@@ -1,5 +1,6 @@
 import Ellipse  from "../../../assets/signup-page/Ellipse-blue.png"
 import Ellipse2  from "../../../assets/signup-page/Ellipse-blue-2.png"
+import { Link } from "react-router-dom";
 
 
 export default function LoginPage() {
@@ -16,7 +17,7 @@ export default function LoginPage() {
 
         {/* Direita: Formulário */}
         <div className="backdrop-blur-sm bg-white/5 border  from-[#1c1c1c] to-black border-gray-700 p-20 rounded-xl w-full max-w-sm shadow-lg z-10">
-          <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
+          <h2 className="text-2xl font-bold mb-4 text-center">Novo Cadastro</h2>
 
           <input
             type="text"
@@ -38,11 +39,13 @@ export default function LoginPage() {
             Entrar
           </button>
 
-          <p className="text-sm text-center mt-2 cursor-pointer hover:underline">
-            Esqueceu a senha?
-          </p>
 
           <div className="my-4 border-t border-gray-600" />
+          <div>
+            <Link to="/forgot-password" className="text-sm text-center mt-2 cursor-pointer hover:underline">
+            Esqueceu a senha?
+            </Link>
+          </div>
 
          
         </div>

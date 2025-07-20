@@ -34,9 +34,11 @@ export default function LoginPage() {
             Entrar
           </button>
 
-          <p className="text-sm text-center mt-2 cursor-pointer hover:underline">
-            Esqueceu a senha?
-          </p>
+           <div className="mt-2">
+            <Link to="/forgot-password" className="text-sm text-center mt-2 cursor-pointer hover:underline">
+                Esqueceu a senha?
+            </Link>
+           </div>
 
           <div className="my-4 border-t border-gray-600" />
 
