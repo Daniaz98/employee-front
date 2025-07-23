@@ -4,6 +4,7 @@ import Ellipse2  from "../../../assets/forgot-page/Ellipse-forgot-pass2.png"
 
 
 export default function ForgotPage() {
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-white px-8">
       <div className="flex w-full max-w-6xl justify-between items-center gap-8">
