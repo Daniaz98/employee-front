@@ -1,4 +1,5 @@
 import EmployeePhoto from "../../components/EmployeePhoto";
+import Header from "../../components/Header";
 import useListEmps from "../../hooks/useListEmps";
 import "./styles.modules.css"
 
@@ -10,6 +11,7 @@ const Home = () => {
 
     return (
         <div className="text-center">
+            <Header/>
             <h1>Hello</h1>
             <ul>
                 {employees.map((emp) => (
