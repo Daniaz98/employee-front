@@ -12,15 +12,19 @@ const Home = () => {
     return (
         <div className="text-center">
             <Header/>
-            <h1>Hello</h1>
-            <ul>
+            <h1>Funcionários</h1>
+            <div className="">
+                <ul>
                 {employees.map((emp) => (
-                    <li key={emp.id}>
+                    <li className="flex items-center gap-4 mb-4" key={emp.id}>
                         {emp.name} - {emp.email}
-                        <EmployeePhoto id={emp.id}/>
+                        <div className="w-24 h-24 object-cover rounded">
+                            <EmployeePhoto id={emp.id}/>
+                        </div>
                     </li>
                     ))}
-            </ul>
+                </ul>
+            </div>
         </div>
     )
 };
