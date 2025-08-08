@@ -59,7 +59,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-gray-800">Peoplia</h1>
+            <h1 className="text-2xl font-bold text-purple-600">Peoplia</h1>
           </div>
 
           {/* Navigation Buttons */}
@@ -68,10 +68,10 @@ export default function Header() {
               <button
                 key={name}
                 onClick={() => handleButtonClick(name)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 ${
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 cursor-pointer ${
                   activeButton === name
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                    : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'
+                    : 'text-gray-800 hover:text-purple-600 hover:bg-purple-50'
                 }`}
               >
                 <Icon />
