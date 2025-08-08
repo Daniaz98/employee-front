@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeButton, setActiveButton] = useState('Home');
+  const navigate = useNavigate();
+  const location = useLocation()
+
+  const pathToButtonName = (path: string) => {
+    if (path === '/') return 'Home';
+    else if (path === '/register') return 'Registro';
+    else if (path === '/edicao') return 'Edição';
+    else return '';
+  };
+
+  const activeButton = pathToButtonName(location.pathname);
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -12,7 +23,10 @@ export default function Header() {
   };
 
   const handleButtonClick = (buttonName: string) => {
-    setActiveButton(buttonName);
+    if (buttonName === 'Home') navigate('/')
+    else if (buttonName === 'Registro') navigate('/register')
+    else if (buttonName === 'Edição') navigate('/edicao')
+
     console.log(`Navegando para: ${buttonName}`);
   };
 
