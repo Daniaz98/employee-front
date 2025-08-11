@@ -9,7 +9,7 @@ export default function Header() {
   const pathToButtonName = (path: string) => {
     if (path === '/' || path.startsWith('/home')) return 'Home';
     else if (path === '/register') return 'Registro';
-    else if (path === '/edicao') return 'Edição';
+    else if (path === '/edit') return 'Edição';
     else return '';
   };
 
@@ -25,7 +25,7 @@ export default function Header() {
   const handleButtonClick = (buttonName: string) => {
     if (buttonName === 'Home') navigate('/')
     else if (buttonName === 'Registro') navigate('/register')
-    else if (buttonName === 'Edição') navigate('/edicao')
+    else if (buttonName === 'Edição') navigate('/edit')
 
     console.log(`Navegando para: ${buttonName}`);
   };

@@ -37,6 +37,15 @@ export default function Register() {
         }
     };
 
+    const removeSelectedFile = () => {
+        setSelectedFiles(null);
+        // Limpar input file
+        const fileInput = document.getElementById('upload') as HTMLInputElement;
+        if (fileInput) {
+            fileInput.value = '';
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSuccessMessage("");
@@ -162,6 +171,40 @@ export default function Register() {
                             onChange={handleUpload}
                         />
                     </label>
+                     {selectedFiles && (
+                            <div className="space-y-2">
+                                <h4 className="font-semibold text-gray-700">Nova foto:</h4>
+                                <div className="flex items-center justify-between bg-gray-100 p-3 rounded-md">
+                                    <div className="flex items-center space-x-3">
+                                        <div className="w-12 h-12 bg-purple-100 rounded-md flex items-center justify-center">
+                                            <span className="text-purple-600 text-xs">IMG</span>
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-700 truncate max-w-[150px]">
+                                                {selectedFiles.name}
+                                            </p>
+                                            <p className="text-xs text-gray-500">
+                                                {(selectedFiles.size / 1024 / 1024).toFixed(2)} MB
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={removeSelectedFile}
+                                        className="text-red-500 hover:text-red-700 font-bold text-lg cursor-pointer"
+                                    >
+                                        ×
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Mensagem informativa */}
+                        {!formData.photoId && !selectedFiles && (
+                            <p className="text-xs text-gray-500 text-center">
+                                Formatos aceitos: JPG, PNG, GIF (máx. 5MB)
+                            </p>
+                        )}
                 </div>
             </div>
         </div>

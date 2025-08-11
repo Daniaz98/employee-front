@@ -5,17 +5,19 @@ import SignupPage from "./pages/Auth/Signup/SignupPage";
 import ForgotPage from "./pages/Auth/ForgotPassword/ForgotPassword";
 import Register from "./pages/Register";
 import Editor from "./pages/Editor";
+import Employee from "./pages/Employee";
 
 export default function AppRoutes() {
     return (
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/forgot-password" element={<ForgotPage/>}/>
-          <Route path="/home" element={<Home/>} />
-          <Route path="/edicao" element={ <Editor/> } />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/forgot-password" element={<ForgotPage/>}/>
+            <Route path="/home" element={<Home/>} />
+            <Route path="/edit/:id" element={ <Editor/> } />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/employee/:id" element={<Employee/>} />
+            <Route path="/" element={<Navigate to="/home" replace />} />
        </Routes>     
     )
 }

@@ -5,6 +5,7 @@ export interface ApiEmp {
     name: string
     email: string
     address: string
+    photoId?: string | null
 }
 
 export default function useEditor() {
@@ -13,7 +14,7 @@ export default function useEditor() {
 
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-    const atualizarEmp = async (payload: ApiEmp, files?: FileList | null) => {
+    const atualizarEmp = async (payload: ApiEmp, file?: File | null) => {
         setLoading(true)
         setError(null)
 
@@ -22,12 +23,19 @@ export default function useEditor() {
             formData.append("name", payload.name);
             formData.append("email", payload.email);
             formData.append("address", payload.address);
-            
-            if (files && files.length > 0) {
-            Array.from(files).forEach(file => {
-                formData.append("files", file);
-            });
+
+            if (file) {
+                formData.append("photoId", file);
+                formData.append("RemovePhoto", "false")
             }
+
+           else if (payload.photoId === null) {
+                formData.append("RemovePhoto", "true");
+            }
+            else {
+                formData.append("RemovePhoto", "false")
+            }
+            
 
             const res = await fetch(`${baseUrl}employee/${payload.id}`,   {
                     method: "PUT",
@@ -42,6 +50,9 @@ export default function useEditor() {
                 } catch (_) {}
                 throw new Error(errorMessage)
             }
+
+            return await res.json()
+
         } catch (err: any) {
             setError(err.message || "Erro desconhecido");
             throw err;
