@@ -7,7 +7,7 @@ export default function Header() {
   const location = useLocation()
 
   const pathToButtonName = (path: string) => {
-    if (path === '/') return 'Home';
+    if (path === '/' || path.startsWith('/home')) return 'Home';
     else if (path === '/register') return 'Registro';
     else if (path === '/edicao') return 'Edição';
     else return '';

@@ -1,35 +1,37 @@
 import { useState } from "react"
 
 export interface ApiEmp {
+    id: string
     name: string
     email: string
     address: string
-    photoId?: File | null
 }
 
-export default function useRegister() {
+export default function useEditor() {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
 
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-    const registrarEmp = async (payload: ApiEmp) => {
+    const atualizarEmp = async (payload: ApiEmp, files?: FileList | null) => {
         setLoading(true)
         setError(null)
 
         try {
-            const formData = new FormData()
-            formData.append("name", payload.name)
-            formData.append("email", payload.email)
-            formData.append("address", payload.address)
-
-            if (payload.photoId) {
-                formData.append('photoId', payload.photoId)
+            const formData = new FormData();
+            formData.append("name", payload.name);
+            formData.append("email", payload.email);
+            formData.append("address", payload.address);
+            
+            if (files && files.length > 0) {
+            Array.from(files).forEach(file => {
+                formData.append("files", file);
+            });
             }
 
-            const res = await fetch(`${baseUrl}employee`,   {
-                    method: "POST",
-                    body: formData,
+            const res = await fetch(`${baseUrl}employee/${payload.id}`,   {
+                    method: "PUT",
+                    body: formData
                 })
 
             if (!res.ok) {
@@ -40,9 +42,6 @@ export default function useRegister() {
                 } catch (_) {}
                 throw new Error(errorMessage)
             }
-
-            const newEmp = await res.json()
-            return newEmp
         } catch (err: any) {
             setError(err.message || "Erro desconhecido");
             throw err;
@@ -51,5 +50,5 @@ export default function useRegister() {
             }
     }
 
-    return { registrarEmp, loading, error}
+    return { atualizarEmp, loading, error}
 }

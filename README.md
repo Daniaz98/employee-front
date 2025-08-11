@@ -1,69 +1,95 @@
-# React + TypeScript + Vite
+📋 Employee Manager Front
+Employee Manager Front é uma aplicação web para gerenciamento de funcionários, com autenticação diferenciada para administradores e funcionários.
+O sistema permite o CRUD completo (criação, leitura, atualização e exclusão) de registros de funcionários e o upload de fotos de perfil.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Funcionalidades
+Autenticação de usuários:
 
-Currently, two official plugins are available:
+- Admin: acesso a todos os recursos e funcionalidades.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Funcionário: acesso restrito às suas próprias informações.
 
-## Expanding the ESLint configuration
+Gerenciamento de funcionários:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Criar, listar, editar e excluir registros.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Visualizar detalhes do funcionário.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Upload de fotos:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Adicionar ou alterar a foto do funcionário.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Interface intuitiva:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Layout responsivo.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Organização em cards para melhor visualização.
+
+Segurança:
+
+- Rotas protegidas por autenticação.
+
+- Diferenciação de permissões conforme o tipo de usuário.
+
+🛠️ Tecnologias Utilizadas
+
+- Front-end: React + Tailwind CSS
+
+- Roteamento: React Router
+
+- Gerenciamento de estado: React Hooks (useState, useEffect)
+
+- Upload de arquivos: Componente personalizado integrado ao formulário
+
+- Integração com back-end: API REST em C# .NET (Employee Manager API)
+
+📂 Estrutura do Projeto
+
+employee-manager-front/
+├── src/
+│   ├── assets/           # Imagens e ícones
+│   ├── components/       # Componentes reutilizáveis (Header, Form, Card, etc.)
+│   ├── hooks/            # Hooks personalizados (ex: useAuth, useRegister)
+│   ├── pages/            # Páginas principais (Login, Register, Home, etc.)
+│   ├── routes/           # Configuração de rotas e rotas protegidas
+│   ├── services/         # Conexão com API (authService, employeeService, etc.)
+│   ├── styles/           # Arquivos de estilo globais e configurações do Tailwind
+│   ├── types/            # Tipagens e interfaces TypeScript
+│   ├── App.jsx           # Roteamento principal
+│   └── main.jsx          # Ponto de entrada
+├── public/
+│   ├── favicon.ico       # Ícone do site
+│   └── index.html
+└── package.json
+
+
+⚙️ Instalação e Execução
+
+1️⃣ Clonar o repositório
+  git clone https://github.com/seu-usuario/employee-manager-front.git
+  cd employee-manager-front
+2️⃣ Instalar dependências
+  npm install
+3️⃣ Configurar variáveis de ambiente
+Crie um arquivo .env na raiz do projeto e configure:
+  VITE_API_BASE_URL=http://localhost:5000/api
+4️⃣ Executar o projeto
+  npm run dev
+O projeto estará disponível em http://localhost:5173
+
+
+🔑 Fluxo de Autenticação
+
+- O usuário faz login informando e-mail e senha.
+
+- O sistema identifica o tipo de usuário (admin ou funcionário).
+
+- As permissões são aplicadas conforme o papel do usuário.
+
+- A navegação é protegida por rotas privadas.
+
+🖼️ Upload de Fotos
+
+- O upload pode ser feito no cadastro ou edição do funcionário.
+
+- As imagens são armazenadas no servidor via API.
