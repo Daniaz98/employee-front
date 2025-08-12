@@ -1,4 +1,5 @@
 📋 Employee Manager Front
+
 Employee Manager Front é uma aplicação web para gerenciamento de funcionários, com autenticação diferenciada para administradores e funcionários.
 O sistema permite o CRUD completo (criação, leitura, atualização e exclusão) de registros de funcionários e o upload de fotos de perfil.
 
@@ -66,15 +67,24 @@ employee-manager-front/
 ⚙️ Instalação e Execução
 
 1️⃣ Clonar o repositório
+
   git clone https://github.com/seu-usuario/employee-manager-front.git
   cd employee-manager-front
+  
 2️⃣ Instalar dependências
+
   npm install
+  
 3️⃣ Configurar variáveis de ambiente
+
 Crie um arquivo .env na raiz do projeto e configure:
+
   VITE_API_BASE_URL=http://localhost:5000/api
+  
 4️⃣ Executar o projeto
+
   npm run dev
+  
 O projeto estará disponível em http://localhost:5173
 
 
