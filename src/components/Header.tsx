@@ -9,7 +9,6 @@ export default function Header() {
   const pathToButtonName = (path: string) => {
     if (path === '/' || path.startsWith('/home')) return 'Home';
     else if (path === '/register') return 'Registro';
-    else if (path === '/edit') return 'Edição';
     else return '';
   };
 
@@ -25,7 +24,6 @@ export default function Header() {
   const handleButtonClick = (buttonName: string) => {
     if (buttonName === 'Home') navigate('/')
     else if (buttonName === 'Registro') navigate('/register')
-    else if (buttonName === 'Edição') navigate('/edit')
 
     console.log(`Navegando para: ${buttonName}`);
   };
@@ -49,12 +47,6 @@ export default function Header() {
     </svg>
   );
 
-  const EditIcon = () => (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-    </svg>
-  );
-
   const MenuIcon = () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -64,7 +56,6 @@ export default function Header() {
   const navigationItems = [
     { name: 'Home', icon: HomeIcon },
     { name: 'Registro', icon: FileIcon },
-    { name: 'Edição', icon: EditIcon }
   ];
 
   return (
@@ -73,7 +64,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-purple-600">Peoplia</h1>
+            <h1 className="text-2xl font-bold text-purple-600 cursor-pointer">Peoplia</h1>
           </div>
 
           {/* Navigation Buttons */}

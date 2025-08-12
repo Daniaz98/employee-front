@@ -7,7 +7,6 @@ const EmployeePhoto = ({ id }: { id: string }) => {
   if (loading) return <p>Carregando foto...</p>;
   if (error) return <p>{error}</p>;
    if (!photoBlob) {
-    console.log('PhotoBlob é null/undefined, renderizando ícone...');
     return <AiOutlineQuestion size={90} style={{ color: '#666' }} />;
   }
 

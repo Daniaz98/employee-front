@@ -4,6 +4,8 @@ import { useState } from "react";
 import type { ApiEmp } from "../../hooks/useRegister";
 import useRegister from "../../hooks/useRegister";
 import usePhotoUp from "../../hooks/usePhotoUp";
+import { CiCircleRemove } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
     const [formData, setFormData] = useState<ApiEmp>({
@@ -15,6 +17,7 @@ export default function Register() {
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
     const [successMessage, setSuccessMessage] = useState("");
     const [employeeId, setEmployeeId] = useState<string>("");
+    const navigate = useNavigate()
 
     const { registrarEmp, loading, error } = useRegister();
     const { uploadPhoto, loading: uploadLoading, error: uploadError } = usePhotoUp(employeeId);
@@ -69,6 +72,9 @@ export default function Register() {
             }
             
             setSuccessMessage("Funcionário registrado com sucesso!");
+            setTimeout(() => {
+                    navigate('/')
+            }, 3000)
             
         } catch (err) {
             console.error("Erro ao registrar funcionário:", err);
@@ -171,9 +177,10 @@ export default function Register() {
                             onChange={handleUpload}
                         />
                     </label>
+
                      {selectedFiles && (
                             <div className="space-y-2">
-                                <h4 className="font-semibold text-gray-700">Nova foto:</h4>
+                                <h4 className="font-semibold text-gray-700">Foto:</h4>
                                 <div className="flex items-center justify-between bg-gray-100 p-3 rounded-md">
                                     <div className="flex items-center space-x-3">
                                         <div className="w-12 h-12 bg-purple-100 rounded-md flex items-center justify-center">
@@ -184,17 +191,14 @@ export default function Register() {
                                                 {selectedFiles.name}
                                             </p>
                                             <p className="text-xs text-gray-500">
-                                                {(selectedFiles.size / 1024 / 1024).toFixed(2)} MB
+                                                {(selectedFiles.size / 1024 / 1024).toFixed(2)}
                                             </p>
                                         </div>
                                     </div>
-                                    <button
-                                        type="button"
+                                    <CiCircleRemove
                                         onClick={removeSelectedFile}
                                         className="text-red-500 hover:text-red-700 font-bold text-lg cursor-pointer"
-                                    >
-                                        ×
-                                    </button>
+                                    />
                                 </div>
                             </div>
                         )}

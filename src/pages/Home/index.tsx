@@ -17,7 +17,7 @@ const Home = () => {
     if (error) return <div>Erro: {error}</div>;
 
     return (
-        <div className="text-center p-0 bg-gradient-to-r from-gray-900 to-purple-900 min-h-screen">
+        <div className="text-center p-0 bg-gradient-to-r from-gray-800 to-purple-800 min-h-screen">
             <Header />
             <h1 className="text-3xl font-bold mb-8 mt-4 text-white">Quadro de Funcionários</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center">

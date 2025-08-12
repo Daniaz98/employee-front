@@ -112,7 +112,7 @@ export default function Editor() {
             setSuccessMessage("Funcionário editado com sucesso!");
             
             setTimeout(() => {
-                navigate('/home'); // ou para onde você quiser redirecionar
+                navigate('/home'); 
             }, 2000);
             
         } catch (err) {
@@ -271,7 +271,7 @@ export default function Editor() {
                                         <div className="w-12 h-12 bg-purple-100 rounded-md flex items-center justify-center">
                                             <span className="text-purple-600 text-xs">IMG</span>
                                         </div>
-                                        <div>
+                                        <div>   
                                             <p className="text-sm font-medium text-gray-700 truncate max-w-[150px]">
                                                 {selectedFile.name}
                                             </p>
