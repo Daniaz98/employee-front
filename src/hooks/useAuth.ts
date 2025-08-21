@@ -21,10 +21,19 @@ export default function useAuth() {
         setError(null)
         try {
             const data = await login(credentials)
+
+            if (data?.token) {
+                localStorage.setItem("authToken", data.token)
+            }
+
             return data;
-        } catch (err: any) {
-            setError(err.respons?.data?.message || "Erro ao fazer login")
-            return null
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError((err as any).response?.data?.message || err.message || "Erro ao fazer login");
+            } else {
+                setError("Erro desconhecido ao fazer login");
+            }
+            return null;
         } finally {
             setLoading(false)
         }
@@ -36,18 +45,27 @@ export default function useAuth() {
         try {
             const data = await register(userData)
             return data;
-        } catch (err: any) {
-            setError(err.respons?.data?.message || "Erro ao registrar")
-            return null
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError((err as any).response?.data?.message || err.message || "Erro ao fazer registrar");
+            } else {
+                setError("Erro desconhecido ao fazer registo");
+            }
+            return null;
         } finally {
             setLoading(false)
         }
     }
 
+    function handleLogout() {
+        logout()
+        localStorage.removeItem("authToken")
+    }
+
     return {
         handleLogin,
         handleRegister,
-        logout,
+        logout: handleLogout,
         getToken,
         loading,
         error
