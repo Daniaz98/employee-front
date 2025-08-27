@@ -1,4 +1,3 @@
-import { useState } from "react"
 
 interface ModalDeleteProps {
   isOpen: boolean;
@@ -30,8 +29,8 @@ export const ModalDelete: React.FC<ModalDeleteProps> = ({
                         {loading ? "Excluindo..." : "Excluir"}
                     </button>
                     <button 
-                        className="px-4 py-2 bg-blue-600/80 backdrop-blur-sm rounded-lg text-white 
-                                   hover:bg-blue-600/90 transition-all duration-200 border border-blue-500/30 cursor-pointer"
+                        className="px-4 py-2 bg-purple-600/80 backdrop-blur-sm rounded-lg text-white 
+                                   hover:bg-purple-600/90 transition-all duration-200 border border-blue-500/30 cursor-pointer"
                         onClick={onClose}
                     >
                         Cancelar

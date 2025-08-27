@@ -22,13 +22,12 @@ export default function Header() {
   };
 
   const handleButtonClick = (buttonName: string) => {
-    if (buttonName === 'Home') navigate('/')
+    if (buttonName === 'Home') navigate('/home')
     else if (buttonName === 'Registro') navigate('/register')
 
     console.log(`Navegando para: ${buttonName}`);
   };
 
-  // Ícones SVG
   const SearchIcon = () => (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -59,7 +58,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-lg border-b">
+    <header className="bg-gray-950 shadow-lg border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -76,7 +75,7 @@ export default function Header() {
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 cursor-pointer ${
                   activeButton === name
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                    : 'text-gray-800 hover:text-purple-600 hover:bg-purple-50'
+                    : 'text-gray-400 hover:text-purple-600 hover:bg-purple-50'
                 }`}
               >
                 <Icon />
@@ -97,7 +96,7 @@ export default function Header() {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyPress={handleSearch}
                 placeholder="Pesquisar..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200 text-purple-700 placeholder-gray-400"
               />
             </div>
           </div>

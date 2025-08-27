@@ -93,6 +93,10 @@ export default function Employee() {
                                     <span className="font-semibold text-gray-300">Endereço:</span> 
                                     <span className="ml-2 text-gray-300">{employee.address}</span>
                                 </p>
+                                <p className="text-lg">
+                                    <span className="font-semibold text-gray-300">Setor:</span>
+                                    <span className="ml-2 text-gray-300">{employee.department}</span>
+                                </p>
                             </div>
                         </div>
                         {/* Botões */}

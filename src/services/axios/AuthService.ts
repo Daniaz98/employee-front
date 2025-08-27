@@ -20,7 +20,6 @@ export async function register(userData: RegisterData) {
 export async function login(credentials: LoginCredentials) {
   const res = await axios.post(`${baseUrl}authentication/login`, credentials);
 
-  // Se sua API retorna token
   if (res.data.token) {
     localStorage.setItem("token", res.data.token);
   }

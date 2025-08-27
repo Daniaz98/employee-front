@@ -5,6 +5,7 @@ export interface ApiEmp {
     email: string
     address: string
     photoId?: File | null
+    department: string
 }
 
 export default function useRegister() {
@@ -22,6 +23,7 @@ export default function useRegister() {
             formData.append("name", payload.name)
             formData.append("email", payload.email)
             formData.append("address", payload.address)
+            formData.append("department", payload.department)
 
             if (payload.photoId) {
                 formData.append('photoId', payload.photoId)

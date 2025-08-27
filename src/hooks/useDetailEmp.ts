@@ -7,6 +7,7 @@ export interface ApiEmployee {
     email: string
     address: string
     photoId?: string | null
+    department: string
 }
 
 
