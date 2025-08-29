@@ -6,6 +6,7 @@ export interface ApiEmp {
     email: string
     address: string
     photoId?: string | null
+    department: string
 }
 
 export default function useEditor() {
@@ -23,6 +24,7 @@ export default function useEditor() {
             formData.append("name", payload.name);
             formData.append("email", payload.email);
             formData.append("address", payload.address);
+            formData.append("department", payload.department)
 
             if (file) {
                 formData.append("photoId", file);

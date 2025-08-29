@@ -11,6 +11,7 @@ export interface ApiEmp {
   email: string;
   address: string;
   photoId?: string | null;
+  department: string
 }
 
 export default function Editor() {
@@ -23,6 +24,7 @@ export default function Editor() {
     email: "",
     address: "",
     photoId: null,
+    department: "",
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [successMessage, setSuccessMessage] = useState("");
@@ -75,13 +77,13 @@ export default function Editor() {
         if (!res.ok) throw new Error("Erro ao buscar funcionário");
         const data = await res.json();
 
-        // Garantir que os dados tenham o formato correto
         setFormData({
           id: data.id || id,
           name: data.name || "",
           email: data.email || "",
           address: data.address,
           photoId: data.photoId || null,
+          department: data.department || "",
         });
       } catch (err) {
         console.error("Erro ao carregar funcionário:", err);
@@ -103,10 +105,9 @@ export default function Editor() {
     setSuccessMessage("");
 
     try {
-      // Garantir que o ID está presente nos dados
       const dataToUpdate = {
         ...formData,
-        id: id, // Usar o ID da URL
+        id: id, 
       };
 
       await atualizarEmp(dataToUpdate, selectedFile);
@@ -137,7 +138,6 @@ export default function Editor() {
     );
   }
 
-  // Se não encontrou o ID
   if (!id) {
     return (
       <div className="text-center p-0 bg-gradient-to-r from-gray-900 to-purple-900 min-h-screen">
@@ -157,15 +157,12 @@ export default function Editor() {
     <div className="text-center p-0 bg-gradient-to-r from-gray-900 to-purple-900 min-h-screen">
       <Header />
       <div className="min-h-screen flex items-center justify-center p-4">
-        {/* Container com flex */}
         <div className="bg-white p-10 rounded-lg shadow-md w-full max-w-4xl flex gap-10">
-          {/* Formulário */}
           <form onSubmit={handleSubmit} className="flex-1">
             <h2 className="text-2xl font-bold mb-6 text-center text-purple-700">
               Editar funcionário
             </h2>
 
-            {/* Mensagens de feedback */}
             {error && (
               <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md">
                 {error}
@@ -221,6 +218,22 @@ export default function Editor() {
               id="address"
               name="address"
               value={formData.address}
+              onChange={handleChange}
+              minLength={6}
+              className="w-full p-3 mb-6 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+
+            <label
+              htmlFor="address"
+              className="block text-start text-gray-700 font-semibold mb-2"
+            >
+              Setor
+            </label>
+            <input
+              type="text"
+              id="department"
+              name="department"
+              value={formData.department}
               onChange={handleChange}
               minLength={6}
               className="w-full p-3 mb-6 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"

@@ -29,7 +29,7 @@ export default function Employee() {
                 setShowSuccessMessage(true)
 
                 setTimeout(() => {
-                    navigate('/')
+                    navigate('/home')
                 }, 3000)
             } else {
                 setIsModalOpen(false)
