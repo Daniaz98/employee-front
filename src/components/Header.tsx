@@ -9,6 +9,7 @@ export default function Header() {
   const pathToButtonName = (path: string) => {
     if (path === '/' || path.startsWith('/home')) return 'Home';
     else if (path === '/register') return 'Registro';
+    else if (path === '/departments') return 'Departamentos';
     else return '';
   };
 
@@ -24,6 +25,7 @@ export default function Header() {
   const handleButtonClick = (buttonName: string) => {
     if (buttonName === 'Home') navigate('/home')
     else if (buttonName === 'Registro') navigate('/register')
+    else if (buttonName === 'Departamentos') navigate('/departments')
 
     console.log(`Navegando para: ${buttonName}`);
   };
@@ -52,21 +54,30 @@ export default function Header() {
     </svg>
   );
 
+  const DepartmentIcon = () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M3 7h18M3 12h18M3 17h18" 
+      />
+    </svg>
+  )
+
   const navigationItems = [
     { name: 'Home', icon: HomeIcon },
     { name: 'Registro', icon: FileIcon },
+    {name: 'Departamentos', icon: DepartmentIcon}
   ];
 
   return (
     <header className="bg-gray-950 shadow-lg border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-2xl font-bold text-purple-600 cursor-pointer">Peoplia</h1>
           </div>
-
-          {/* Navigation Buttons */}
           <nav className="hidden md:flex space-x-1">
             {navigationItems.map(({ name, icon: Icon }) => (
               <button
@@ -83,8 +94,6 @@ export default function Header() {
               </button>
             ))}
           </nav>
-
-          {/* Search Bar */}
           <div className="flex-1 max-w-md mx-4">
             <div className="relative">
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
@@ -101,7 +110,6 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               className="p-2 rounded-lg text-gray-600 hover:text-blue-500 hover:bg-blue-50 transition-colors"
@@ -112,7 +120,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <div className="md:hidden border-t bg-gray-50">
           <nav className="flex justify-around py-2">
             {navigationItems.map(({ name, icon: Icon }) => (

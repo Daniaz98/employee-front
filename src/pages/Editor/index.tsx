@@ -55,7 +55,6 @@ export default function Editor() {
 
   const removeSelectedFile = () => {
     setSelectedFile(null);
-    // Limpar input file
     const fileInput = document.getElementById("upload") as HTMLInputElement;
     if (fileInput) {
       fileInput.value = "";
@@ -122,7 +121,6 @@ export default function Editor() {
     }
   };
 
-  // Loading state enquanto carrega os dados
   if (isLoading) {
     return (
       <div className="text-center p-0 bg-gradient-to-r from-gray-900 to-purple-900 min-h-screen">
@@ -248,9 +246,7 @@ export default function Editor() {
             </button>
           </form>
 
-          {/* Upload de foto */}
           <div className="flex-1 space-y-4">
-            {/* Foto atual */}
             {formData.photoId && (
               <div className="space-y-2">
                 <h4 className="font-semibold text-gray-700">Foto atual:</h4>
@@ -291,7 +287,6 @@ export default function Editor() {
               />
             </label>
 
-            {/* Nova foto selecionada */}
             {selectedFile && (
               <div className="space-y-2">
                 <h4 className="font-semibold text-gray-700">Nova foto:</h4>
@@ -320,7 +315,6 @@ export default function Editor() {
               </div>
             )}
 
-            {/* Mensagem informativa */}
             {!formData.photoId && !selectedFile && (
               <p className="text-xs text-gray-500 text-center">
                 Formatos aceitos: JPG, PNG, GIF (máx. 5MB)

@@ -1,12 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import LoginPage from "./pages/Auth/Login/LoginPage";
-import SignupPage from "./pages/Auth/Signup/SignupPage";
-import ForgotPage from "./pages/Auth/ForgotPassword/ForgotPassword";
-import Register from "./pages/Register";
-import Editor from "./pages/Editor";
-import Employee from "./pages/Employee";
-import { PrivateRoute } from "./middleware/PrivateRoute";
+import Home from "../pages/Home";
+import LoginPage from "../pages/Auth/Login/LoginPage";
+import SignupPage from "../pages/Auth/Signup/SignupPage";
+import ForgotPage from "../pages/Auth/ForgotPassword/ForgotPassword";
+import Register from "../pages/Register";
+import Editor from "../pages/Editor";
+import Employee from "../pages/Employee";
+import { PrivateRoute } from "../middleware/PrivateRoute";
+import Departments from "../pages/Departments";
 
 export default function AppRoutes() {
   return (
@@ -20,6 +21,8 @@ export default function AppRoutes() {
         <Route path="/edit/:id" element={<Editor />} />
         <Route path="/register" element={<Register />} />
         <Route path="/employee/:id" element={<Employee />} />
+        <Route path="/departments" element={<Departments />} />
+
       </Route>
 
       <Route path="/" element={<Navigate to="/login" replace />} />
